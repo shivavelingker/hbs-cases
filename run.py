@@ -1,18 +1,23 @@
 '''
 This script automates the process of scraping case metadata from HBS and submitting it through a form.
+First fill in the below data: YOUR_EMAIL and CASE_LINKS_TO_DOWNLOAD.
 
-File Instructions:
-1. Fill in your HBS email address in the `YOUR_EMAIL` variable down below.
-2. Add the case links you want to download in the `CASE_LINKS_TO_DOWNLOAD` list.
-
-Python Setup:
-1. Save this code in a folder in a file named `run.py`.
+Then follow the Python setup instructions to run the script:
+1. Save this code in a folder in a file named `run.py`, and separately also save the requirement.txt file in the same folder.
 2. Setup your Python by running: "python -m venv venv"
 3. Activate the virtual environment by running: "source venv/bin/activate" (Linux/Mac) or "venv\Scripts\activate" (Windows).
 4. Install the required packages by running: "pip install -r requirements.txt" (make sure you have a `requirements.txt` file with the necessary libraries).
 5. Run the script to scrape metadata and submit the form by running the command: "python run.py"
-
 '''
+# -------------- FILL THIS IN --------------
+YOUR_EMAIL = "YOU@mba2025.hbs.edu"
+
+CASE_LINKS_TO_DOWNLOAD = [
+    "https://www.hbs.edu/faculty/Pages/item.aspx?num=38020",
+    # Add more links here
+]
+
+# -------------- THE ACTUAL SCRIPT --------------
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -24,14 +29,6 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
-# -------------- FILL THIS IN --------------
-YOUR_EMAIL = "YOU@mba2025.hbs.edu"
-
-CASE_LINKS_TO_DOWNLOAD = [
-    "https://www.hbs.edu/faculty/Pages/item.aspx?num=66865",
-    # Add more links here
-]
 
 # -------------- LOAD PREVIOUS SUBMISSIONS --------------
 OUTPUT_FILE = "output.csv"
